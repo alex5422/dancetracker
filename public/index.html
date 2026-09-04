@@ -759,6 +759,21 @@ body.grand-ouvert{overflow:hidden;}
  box-shadow:0 0 10px currentColor}
 .bob-avis{display:none}
 
+
+/* ── la scène : les lectures ont leur propre fond ── */
+.dt-scene{background:linear-gradient(180deg,#0d1526,#0a1018);border-radius:18px;
+ padding:16px 18px 20px;margin:12px 0 16px;
+ box-shadow:0 18px 44px rgba(6,12,24,.28),inset 0 1px 0 rgba(255,255,255,.05);
+ border:1px solid rgba(120,160,220,.16);color:#dce9fb}
+.dt-scene .an-onglets{border-bottom-color:rgba(255,255,255,.10)}
+.dt-scene .an-o{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);
+ color:#a8bdd8}
+.dt-scene .an-o:hover{color:#eaf3ff;border-color:rgba(240,180,41,.5)}
+.dt-scene .an-o.on{color:#fff3d8}
+.dt-scene table,.dt-scene td,.dt-scene th{color:inherit}
+.dt-scene .an-vide{color:#9fb2cc}
+@media(max-width:660px){.dt-scene{padding:12px 12px 16px;border-radius:14px}}
+
 </style>
 </head>
 <body>
@@ -908,6 +923,7 @@ body.grand-ouvert{overflow:hidden;}
             <span class="dz-titre" id="dz-etat">chargez une vidéo pour commencer</span>
           </div>
 <div class="danse-ruban" id="danse-ruban"></div>
+        <div class="dt-scene">
         <div class="an-onglets">
           <button class="an-o on" id="an-b-danse" onclick="visAnOnglet('danse')">Mouvement dansé</button>
           <button class="an-o" id="an-b-kabat" onclick="visAnOnglet('kabat')">Kabat</button>
@@ -940,6 +956,7 @@ body.grand-ouvert{overflow:hidden;}
         <div class="an-vue" id="an-vue-benesh"></div>
         <div class="an-vue" id="an-vue-bobath"></div>
         <div class="an-vue" id="an-vue-kineto"></div>
+        </div>
                 </section>
 
       <div id="welcome-state" class="empty-state">
