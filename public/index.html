@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="DanceTracker">
 <meta name="application-name" content="DanceTracker">
-<meta name="theme-color" content="#1a1d2e">
+<meta name="theme-color" content="#070b12">
 <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj4KICA8cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9Ijk2IiBmaWxsPSIjMWExZDJlIi8+CiAgPGNpcmNsZSBjeD0iMjU2IiBjeT0iMTgwIiByPSI1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjBhNWZhIiBzdHJva2Utd2lkdGg9IjE4Ii8+CiAgPGxpbmUgeDE9IjI1NiIgeTE9IjIzNSIgeDI9IjI1NiIgeTI9IjM0MCIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utd2lkdGg9IjIwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8bGluZSB4MT0iMjU2IiB5MT0iMzQwIiB4Mj0iMjAwIiB5Mj0iNDIwIiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iMTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxsaW5lIHgxPSIyNTYiIHkxPSIzNDAiIHgyPSIzMTIiIHkyPSI0MjAiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIxOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGxpbmUgeDE9IjI1NiIgeTE9IjI4MCIgeDI9IjE4NSIgeTI9IjMxMCIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utd2lkdGg9IjE2IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8bGluZSB4MT0iMjU2IiB5MT0iMjgwIiB4Mj0iMzI3IiB5Mj0iMzEwIiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iMTYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjI1NiIgY3k9IjM0MCIgcj0iMTIiIGZpbGw9IiMzYjRmYzgiLz4KICA8dGV4dCB4PSIyNTYiIHk9IjQ5MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI1MiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiPk9TPC90ZXh0Pgo8L3N2Zz4=">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -671,7 +671,7 @@ body.grand-ouvert{overflow:hidden;}
 
 
 /* ── DanceTracker : le clinique n'a pas sa place ici ── */
-.pt-bar,.ux-bar,#cmp-ouvrir,#danse-pdf,.vis-aide{display:none!important}
+.pt-bar,.ux-bar,#danse-pdf,#cmp-ouvrir,.vis-aide{display:none!important}
 /* le bandeau ne garde que les articulations : plus de section clinique */
 .tab-sep,.tab-sec-lbl{display:none!important}
 #tab-bar{padding-bottom:6px}
@@ -792,6 +792,122 @@ body.grand-ouvert{overflow:hidden;}
  background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09);
  border-radius:9px;padding:6px 9px}
 
+
+.dt-mur{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));
+ gap:10px;margin:0 0 16px}
+.dt-mur.vide{display:none}
+.dt-m{position:relative;border-radius:12px;overflow:hidden;background:#05080f;
+ border:1px solid rgba(255,255,255,.10)}
+.dt-m canvas{display:block;width:100%;height:auto}
+.dt-m span{position:absolute;left:8px;top:7px;font-size:9.5px;letter-spacing:.18em;
+ text-transform:uppercase;color:#cfe0f5;background:rgba(6,10,20,.55);
+ backdrop-filter:blur(6px);border-radius:6px;padding:3px 8px;pointer-events:none}
+.dt-m b{position:absolute;left:8px;right:8px;bottom:7px;font-size:12px;font-weight:400;
+ color:#fff;text-align:center;text-shadow:0 0 12px rgba(0,0,0,.9);pointer-events:none}
+@media(max-width:660px){.dt-mur{grid-template-columns:repeat(2,1fr)}}
+
+
+.dt-tete{stroke:var(--dt-or);stroke-width:2;opacity:.9;
+ filter:drop-shadow(0 0 6px rgba(240,180,41,.8))}
+.ew-u.vif{background:rgba(240,180,41,.30)!important;
+ border-color:rgba(240,180,41,.85)!important;color:#fff3d8!important;
+ box-shadow:0 0 14px rgba(240,180,41,.45)}
+.kin-w svg,.ben-w svg{transition:none}
+.dt-now{font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+ color:var(--dt-or);opacity:.85;margin-bottom:4px}
+
+
+.dt-fil svg rect[data-t0]{cursor:pointer}
+.dt-fil svg rect[data-t0]:hover{opacity:1!important;stroke:#fff;stroke-width:1}
+.dt-boucle{display:inline-flex;align-items:center;gap:8px;margin:2px 0 10px;
+ font-size:11.5px;color:var(--dt-or);background:rgba(240,180,41,.10);
+ border:1px solid rgba(240,180,41,.35);border-radius:9px;padding:5px 11px}
+.dt-boucle button{background:transparent;border:0;color:#f7e2b0;cursor:pointer;
+ font-family:inherit;font-size:11.5px;text-decoration:underline}
+.dt-rep{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 12px}
+.dt-rep span{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;
+ background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);
+ border-radius:8px;padding:4px 9px;color:#cfe0f5;cursor:pointer}
+.dt-rep span:hover{border-color:rgba(240,180,41,.6);color:#fff3d8}
+.dt-rep i{font-style:normal;color:#7d8ea6}
+.amp-t{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+.amp-t th{text-align:left;font-weight:400;color:#8ea4c0;font-size:10.5px;
+ letter-spacing:.14em;text-transform:uppercase;padding:5px 8px 5px 0}
+.amp-t td{padding:5px 8px 5px 0;border-top:1px solid rgba(255,255,255,.07);
+ color:#dce9fb;font-variant-numeric:tabular-nums}
+.dt-scene.lecon{position:fixed;inset:0;z-index:99998;overflow:auto;border-radius:0;
+ padding:26px 30px}
+.dt-scene.lecon .dt-mur{grid-template-columns:repeat(3,1fr);gap:16px}
+.dt-scene.lecon .an-onglets,.dt-scene.lecon .an-vue{display:none}
+.dt-scene.lecon .dt-sortie{display:inline-block}
+.dt-sortie{display:none;position:fixed;top:18px;right:22px;z-index:99999;
+ background:rgba(8,12,22,.7);border:1px solid rgba(255,255,255,.22);color:#eaf3ff;
+ border-radius:10px;padding:7px 14px;font-size:12px;cursor:pointer;font-family:inherit}
+
+
+.lec-bar{display:none;align-items:center;gap:16px;margin:0 0 18px;padding:12px 16px;
+ border-radius:14px;background:rgba(240,180,41,.07);
+ border:1px solid rgba(240,180,41,.28)}
+.dt-scene.lecon .lec-bar,.lec-bar.on{display:flex}
+.lec-bar{flex-wrap:wrap}
+.lec-t.compte{color:#7ad0ff;text-shadow:0 0 26px rgba(120,208,255,.6)}
+.lec-t{font-size:52px;font-weight:200;color:#fff;line-height:1;min-width:70px;
+ text-align:center;font-variant-numeric:tabular-nums;
+ text-shadow:0 0 26px rgba(240,180,41,.55)}
+.lec-t.frappe{color:var(--dt-or)}
+.lec-l{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#b9c9de}
+.lec-b{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2);
+ color:#eaf3ff;border-radius:10px;padding:8px 15px;font-size:12.5px;cursor:pointer;
+ font-family:inherit;letter-spacing:.06em}
+.lec-b:hover{border-color:rgba(240,180,41,.7);color:#fff3d8}
+.lec-b.on{background:rgba(240,180,41,.20);border-color:rgba(240,180,41,.8);
+ color:#fff3d8}
+.lec-tempo{display:flex;align-items:center;gap:8px;font-size:12px;color:#cfe0f5}
+.lec-tempo input{width:120px}
+
+
+/* ── DanceTracker : la nuit, d'un bout à l'autre ── */
+:root{
+  --bg:#070b12; --white:#0d141f; --s1:#111a28; --bord:#1f2c40; --bord2:#182334;
+  --ink:#e9f1fc; --ink2:#c6d6ea; --muted:#8ea4c0; --faint:#0a1119;
+  --acc:#f0b429; --acc2:#ffc857; --acc-lt:#1a2233;
+  --ok:#3ddc97; --ok-lt:#0f2a20; --warn:#f0b429; --warn-lt:#2a2110;
+  --bad:#ff6b6b; --bad-lt:#2c1417; --info:#5ad1e6; --info-lt:#0f2530;
+}
+body{background:var(--bg);color:var(--ink)}
+.topbar,.left-panel,.right-panel,.content-area{background:var(--bg)}
+.vid-box{background:#05080e;border-radius:14px;overflow:hidden}
+.card,.vid-zone{background:var(--white);border-color:var(--bord)}
+.upload-zone{background:linear-gradient(180deg,rgba(240,180,41,.06),transparent);
+ border:1.5px dashed rgba(240,180,41,.34);color:var(--ink2)}
+.upload-zone:hover{border-color:rgba(240,180,41,.7)}
+.vis-b,.btn-ctrl{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+ color:var(--ink2)}
+.vis-b:hover,.btn-ctrl:hover{border-color:rgba(240,180,41,.55);color:#fff3d8}
+.vis-b.play{background:linear-gradient(180deg,rgba(240,180,41,.26),rgba(240,180,41,.10));
+ border-color:rgba(240,180,41,.65);color:#fff5e0;
+ box-shadow:0 0 26px rgba(240,180,41,.22)}
+.vis-o{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
+ color:#93a8c4}
+.vis-o.on{background:rgba(90,209,230,.16);border-color:rgba(90,209,230,.6);
+ color:#dff6fb}
+.jtab{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);
+ color:#a8bdd8}
+.jtab.active{background:rgba(240,180,41,.18);border-color:rgba(240,180,41,.7);
+ color:#fff3d8}
+.logo-name{color:#fff}
+.logo-tag{color:var(--muted)}
+.os-diag{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+ color:#93a8c4}
+.empty-state,.lv-empty{color:var(--muted)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#070b12}
+::-webkit-scrollbar-thumb{background:#1f2c40;border-radius:6px}
+::-webkit-scrollbar-thumb:hover{background:#2c3d56}
+/* la scène se fond dans la nuit plutôt que d'y flotter */
+.dt-scene{background:linear-gradient(180deg,#0c1422,#080d16);
+ border-color:rgba(120,160,220,.14)}
+
 </style>
 </head>
 <body>
@@ -878,7 +994,7 @@ body.grand-ouvert{overflow:hidden;}
         </div>
         <div class="vis-bar">
           <button class="vis-b play" id="vis-btn" onclick="visRejouer()">▶ Rejouer avec les tracés</button>
-          <button class="vis-o on" id="vis-fleches" onclick="visOption('fleches')">flèches</button><button class="vis-o on" id="vis-etincelles" onclick="visOption('etincelles')">étincelles</button><button class="vis-o on" id="vis-verre" onclick="visOption('verre')">cartouche</button><button class="vis-o on" id="vis-holo" onclick="visOption('holo')">hologramme</button><button class="vis-o on" id="vis-danse" onclick="visOption('danse')">danse</button><button class="vis-o on" id="vis-tend" onclick="visOption('tend')">tendance</button><button class="vis-o on" id="vis-chaines" onclick="visOption('chaines')" title="Les chaînes musculaires tracées sur le corps">chaînes</button><span id="dt-coupe"></span><button class="vis-o" id="vis-console" onclick="visOption('console')">colonnes</button><button class="vis-o on" id="vis-voile" onclick="visOption('voile')">voile</button><button class="vis-o" id="vis-segments" onclick="visOption('segments')">corps coloré</button><button class="vis-o on" id="vis-compteur" onclick="visOption('compteur')">compteur</button><button class="vis-o" id="vis-trace" onclick="visOption('trace')">traînées</button>
+          <button class="vis-o on" id="vis-fleches" onclick="visOption('fleches')">flèches</button><button class="vis-o on" id="vis-etincelles" onclick="visOption('etincelles')">étincelles</button><button class="vis-o on" id="vis-verre" onclick="visOption('verre')">cartouche</button><button class="vis-o on" id="vis-holo" onclick="visOption('holo')">hologramme</button><button class="vis-o on" id="vis-danse" onclick="visOption('danse')">danse</button><button class="vis-o on" id="vis-tend" onclick="visOption('tend')">tendance</button><button class="vis-o on" id="vis-chaines" onclick="visOption('chaines')" title="Les chaînes musculaires tracées sur le corps">chaînes</button><button class="vis-o on" id="vis-mur" onclick="visMurBascule()" title="Six rejeux accolés, chacun avec son écriture">mur de rejeux</button><button class="vis-o" id="vis-miroir" onclick="visOption('miroir')" title="Les deux côtés superposés : le développé à droite vaut-il celui de gauche ?">miroir</button><button class="vis-b" onclick="visReperePoser()" title="Marquer cet instant">⚑ repère</button><button class="vis-o" id="vis-mesure" onclick="visLecBarre()" title="Métronome et musique, sans passer en mode leçon">♪ mesure</button><button class="vis-b" onclick="visLecon()" title="Le mur seul, en grand">⛶ leçon</button><button class="vis-b" onclick="visPartition()" title="Imprimer les portées">⬇ partition</button><span id="dt-coupe"></span><button class="vis-o" id="vis-console" onclick="visOption('console')">colonnes</button><button class="vis-o on" id="vis-voile" onclick="visOption('voile')">voile</button><button class="vis-o" id="vis-segments" onclick="visOption('segments')">corps coloré</button><button class="vis-o on" id="vis-compteur" onclick="visOption('compteur')">compteur</button><button class="vis-o" id="vis-trace" onclick="visOption('trace')">traînées</button>
           <button class="vis-o on" id="vis-vitesse" onclick="visOption('vitesse')">vitesse</button>
           <button class="vis-o on" id="vis-angles" onclick="visOption('angles')">angle mesuré</button>
           <button class="vis-b" id="cmp-ouvrir" onclick="visComparer()" title="Deux vidéos côte à côte, synchronisées">⇄ Comparer</button><button class="vis-b" id="danse-oublier" onclick="visSeanceOublier()" title="Effacer la séance mémorisée">✕ séance</button><button class="vis-b" id="danse-fiche" onclick="visDanseFiche()" title="Enregistrer la phrase en image">⬇ fiche</button><button class="vis-b" id="danse-pdf" onclick="visDanseFichePDF()" title="Enregistrer la phrase en PDF">⬇ PDF</button><button class="vis-b" onclick="visEffacer()">effacer</button>
@@ -941,7 +1057,26 @@ body.grand-ouvert{overflow:hidden;}
             <span class="dz-titre" id="dz-etat">chargez une vidéo pour commencer</span>
           </div>
 <div class="danse-ruban" id="danse-ruban"></div>
+        <button class="dt-sortie" id="dt-sortie" onclick="visLecon()">✕ quitter la leçon</button>
         <div class="dt-scene">
+        <div class="lec-bar" id="lec-bar">
+          <div><div class="lec-l">temps</div><div class="lec-t" id="lec-t">–</div></div>
+          <button class="lec-b" id="lec-jouer" onclick="visLecMetro()">▶ mesurer</button>
+          <div class="lec-tempo"><span id="lec-bpm">96</span> à la noire
+            <input type="range" id="lec-range" min="46" max="152" value="96"
+                   oninput="visLecTempo(this.value)"></div>
+          <button class="lec-b" onclick="visLecMesure()" id="lec-mes">4 temps</button>
+          <button class="lec-b" onclick="visLecAir()" id="lec-air">♪ sans musique</button>
+          <button class="lec-b" onclick="visLecAuMouvement()"
+                  title="Reprendre le tempo relevé sur la danse">au mouvement</button>
+          <div class="lec-tempo">volume
+            <input type="range" id="lec-vol" min="0" max="100" value="70"
+                   oninput="visLecVolume(this.value)"></div>
+          <span class="lec-l" id="lec-msg">le métronome suit la vidéo</span>
+        </div>
+        <div class="dt-mur" id="dt-mur"></div>
+        <div id="dt-boucle"></div>
+        <div id="dt-reperes"></div>
         <div class="an-onglets">
           <button class="an-o on" id="an-b-danse" onclick="visAnOnglet('danse')">Mouvement dansé</button>
           <button class="an-o" id="an-b-kabat" onclick="visAnOnglet('kabat')">Kabat</button>
@@ -954,6 +1089,7 @@ body.grand-ouvert{overflow:hidden;}
           <button class="an-t" id="an-b-tout" onclick="visAnTout()">tout afficher</button>
         </div>
         <div class="an-vue on" id="an-vue-danse" data-nom="Mouvement dansé">
+        <div id="dt-amp"></div>
         <div class="portees" id="danse-portees"></div>
         <div class="filtres">
           <button class="vis-o on" id="jeu-complet" onclick="visJeu('complet')">complet</button>
@@ -3362,7 +3498,7 @@ document.addEventListener('keydown',function(e){
    Le diagnostic reste au médecin. L'application montre : le squelette suivi,
    la trajectoire des extrémités, la vitesse par la couleur, l'accélération
    par l'épaisseur, l'angle mesuré dessiné sur l'articulation. */
-var VIS={on:true,trace:true,vitesse:true,angles:true,fantome:false,chaines:true,
+var VIS={on:true,trace:true,vitesse:true,angles:true,fantome:false,chaines:true,mur:true,
          hist:{},lect:[],rejoue:false,stop:false};
 var VIS_POINTS=[15,16,27,28,13,14,25,26];      /* poignets, chevilles, coudes, genoux */
 var VIS_COL=[[59,82,139],[33,145,140],[121,199,83],[253,231,37]];  /* lent → rapide :
@@ -3423,6 +3559,9 @@ function visDessiner(ctx2,lm,w,h,opt){
   try{visDessinerEtincelles(ctx2,w,h,opt?opt.t:null);}catch(e){}
   try{if(VIS.holo)visDessinerHolo(ctx2,lm,w,h,opt?opt.t:null);else visDessinerSegments(ctx2,lm,w,h);}catch(e){}
   try{visDessinerChaines(ctx2,lm,w,h);}catch(e){}
+  try{visDessinerMiroir(ctx2,lm,w,h);}catch(e){}
+  try{visMurDessiner(lm,opt?opt.t:null);}catch(e){}
+  try{visEcrSuivre(opt?opt.t:null);}catch(e){}
   try{visDessinerFleches(ctx2,lm,w,h);}catch(e){}
   try{visDessinerConsole(ctx2,lm,w,h,opt);}catch(e){}
   try{visDessinerTendances(ctx2,w,h,opt);}catch(e){}
@@ -3520,7 +3659,8 @@ async function visRejouer(){
     }
   }
   VIS.rejoue=false;visBouton();
-  try{visKabAfficher();visLabAfficher();visEwAfficher();visBenAfficher();visKinAfficher();visBobAfficher();}catch(e){}
+  try{visKabAfficher();visLabAfficher();visEwAfficher();visBenAfficher();visKinAfficher();visBobAfficher();
+      visAmpAfficher();visFilClics();}catch(e){}
   try{visDanseRuban();visDanseReleveAfficher();visPorteeAfficher();visSeanceEnregistrer();
       visDzEtat(VIS.phrase.length+' segments · '+(VIS.evts||[]).length+' actions');}catch(e){}
   visMsg(VIS.stop?'':'100 %');
@@ -4688,6 +4828,7 @@ function visDansePousser(lm,t){
   try{visKinPousser(lm,t);}catch(e){}
   try{visBobPousser(lm,t);}catch(e){}
   try{visChTravail(lm,t);}catch(e){}
+  try{visAmpPousser(lm,t);}catch(e){}
   try{visLabPousser(lm,t);}catch(e){}
   const L=visDsLire(lm);if(!L)return;
   VIS.danseCour=L;
@@ -5381,7 +5522,8 @@ function visSeanceRestaurer(){
       const b=document.getElementById('vis-'+k);if(b)b.classList.toggle('on',!!VIS[k]);}});
   if(d.filtres)VIS.filtres=d.filtres;
   try{visDanseRuban();visDanseReleveAfficher();visPorteeAfficher();
-      visKabAfficher();visLabAfficher();visEwAfficher();visBenAfficher();visKinAfficher();visBobAfficher();}catch(e){}
+      visKabAfficher();visLabAfficher();visEwAfficher();visBenAfficher();visKinAfficher();visBobAfficher();
+      visAmpAfficher();visFilClics();}catch(e){}
   const ph=document.getElementById('danse-phrase');
   if(ph&&d.fichier)ph.textContent=(ph.textContent?ph.textContent+'   —   ':'')+d.fichier;
   return true;
@@ -6579,7 +6721,8 @@ function visEwAfficher(){
     let c='';
     li.slice(0,26).forEach(function(p){
       const teinte=(p.u*45+200)%360;
-      c+='<span class="ew-u" style="background:hsla('+teinte+',62%,52%,.22);'+
+      c+='<span class="ew-u" data-t0="'+p.t0.toFixed(2)+'" data-t1="'+p.t1.toFixed(2)+
+         '" style="background:hsla('+teinte+',62%,52%,.22);'+
          'border-color:hsla('+teinte+',72%,62%,.55);color:hsl('+teinte+',80%,86%)" '+
          'title="'+EW_DIR[p.u]+' · '+p.t0.toFixed(1)+' s">'+p.u+
          (p.v!=null?'<sub style="opacity:.55">'+p.v+'</sub>':'')+'</span>';
@@ -6625,13 +6768,18 @@ function visBenPousser(lm,t){
   VIS.ben.img.push({t:t,m:marques});
   if(VIS.ben.img.length>40)VIS.ben.img.shift();
 }
-function visBenAfficher(){
+function visBenAfficher(tFin){
   const el=document.getElementById('an-vue-benesh');if(!el)return;
   const B=VIS.ben;
   if(!B||B.img.length<2){el.innerHTML='<div class="an-vide">Aucune image relevée. '+
     'Lancez une analyse : la portée se remplit d’une image toutes les quatre '+
     'dixièmes de seconde.</div>';return;}
-  const n=B.img.length,LG=46,H=104,haut=14,bas=94,W=40+n*LG;
+  let vues=B.img;
+  if(tFin!=null&&isFinite(tFin)){
+    vues=B.img.filter(function(im){return im.t<=tFin+0.01&&im.t>=tFin-VIS.fenetre;});
+    if(vues.length<2)vues=B.img.slice(-2);
+  }
+  const n=vues.length,LG=46,H=104,haut=14,bas=94,W=40+n*LG;
   let g='<svg viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+
         '" xmlns="http://www.w3.org/2000/svg">';
   const NOMS=['tête','épaules','hanches','genoux','sol'];
@@ -6642,8 +6790,11 @@ function visBenAfficher(){
     g+='<text x="30" y="'+(y+3.5)+'" text-anchor="end" font-size="7.5" '+
        'fill="#7d8ea6" font-family="sans-serif">'+NOMS[k]+'</text>';
   }
-  B.img.forEach(function(im,j){
+  vues.forEach(function(im,j){
     const x0=40+j*LG+LG/2;
+    if(tFin!=null&&j===n-1)
+      g+='<line class="dt-tete" x1="'+(x0+LG/2-3)+'" y1="6" x2="'+(x0+LG/2-3)+
+         '" y2="'+(H-6)+'"/>';
     im.m.forEach(function(m){
       const y=haut+m.r*(bas-haut)/4, x=x0+Math.max(-16,Math.min(16,m.c*13));
       const col=m.pied?'#f0a03c':'#7ad0ff';
@@ -6819,7 +6970,7 @@ function visKinSigne(dir,niv,x,y,h){
   if(niv===1)g+='<circle cx="'+x+'" cy="'+(y-h/2)+'" r="2" fill="#dce9fb"/>';
   return g;
 }
-function visKinAfficher(){
+function visKinAfficher(tFin){
   const el=document.getElementById('an-vue-kineto');if(!el)return;
   const K=VIS.kin;
   let total=0;
@@ -6830,6 +6981,7 @@ function visKinAfficher(){
   let t0=1e9,t1=-1e9;
   KIN_COL.forEach(function(c){(K.suite[c.cle]||[]).forEach(function(p){
     if(p.t0<t0)t0=p.t0;if(p.t1>t1)t1=p.t1;});});
+  if(tFin!=null&&isFinite(tFin)){t1=tFin;t0=Math.max(t0,tFin-VIS.fenetre);}
   const duree=Math.max(0.5,t1-t0),ECH=Math.min(46,Math.max(16,420/duree));
   const H=Math.min(900,duree*ECH+50),W=300;
   const cx=W/2,PAS=34;
@@ -6852,14 +7004,18 @@ function visKinAfficher(){
     g+='<text x="'+x+'" y="10" text-anchor="middle" font-size="8" fill="#7d8ea6" '+
        'font-family="sans-serif">'+c.nom+'</text>';
     (K.suite[c.cle]||[]).forEach(function(p){
-      const d=p.t1-p.t0;if(d<0.18)return;
-      const h=Math.max(7,d*ECH-2);
-      g+=visKinSigne(p.dir,p.niv,x,Y(p.t0),h);
+      if(p.t1<t0||p.t0>t1)return;
+      const a=Math.max(p.t0,t0),b=Math.min(p.t1,t1),d=b-a;
+      if(d<0.12)return;
+      g+=visKinSigne(p.dir,p.niv,x,Y(a),Math.max(7,d*ECH-2));
     });
   });
+  if(tFin!=null)g+='<line class="dt-tete" x1="8" y1="'+Y(t1)+'" x2="'+(W-8)+
+    '" y2="'+Y(t1)+'"/>';
   g+='<text x="6" y="'+(H-8)+'" font-size="8" fill="#6d7f96" font-family="sans-serif">'+
-     'début</text><text x="6" y="16" font-size="8" fill="#6d7f96" '+
-     'font-family="sans-serif">fin</text></svg>';
+     (tFin!=null?t0.toFixed(1)+' s':'début')+'</text><text x="6" y="16" font-size="8" '+
+     'fill="#6d7f96" font-family="sans-serif">'+
+     (tFin!=null?'maintenant':'fin')+'</text></svg>';
   el.innerHTML='<div class="kab-s"><b>Comment lire.</b> Le temps monte, du bas '+
     'vers le haut. La ligne centrale épaisse sépare la gauche de la droite ; de '+
     'part et d’autre, une colonne par membre. Chaque signe est un geste tenu : sa '+
@@ -6880,14 +7036,16 @@ function visFil(titre,bandes,t0,t1){
   const W=1000,H=34,d=Math.max(0.2,t1-t0);
   const X=function(t){return 8+(W-16)*(t-t0)/d;};
   let g='<div class="dt-fil"><div class="dt-fil-t">'+titre+'</div>'+
-        '<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none">'+
+        '<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" data-t0="'+
+        t0+'" data-t1="'+t1+'">'+
         '<rect x="8" y="8" width="'+(W-16)+'" height="16" rx="8" '+
         'fill="rgba(255,255,255,.045)"/>';
   bandes.forEach(function(b){
     const x=X(b.t0),w=Math.max(2,X(b.t1)-X(b.t0));
     g+='<rect x="'+x.toFixed(1)+'" y="8" width="'+w.toFixed(1)+'" height="16" rx="6" '+
-       'fill="'+b.c+'" opacity=".82"><title>'+b.nom+' · '+b.t0.toFixed(1)+
-       '–'+b.t1.toFixed(1)+' s</title></rect>';
+       'fill="'+b.c+'" opacity=".82" data-t0="'+b.t0.toFixed(2)+'" data-t1="'+
+       b.t1.toFixed(2)+'" data-nom="'+b.nom.replace(/"/g,'')+'"><title>'+b.nom+
+       ' · '+b.t0.toFixed(1)+'–'+b.t1.toFixed(1)+' s</title></rect>';
   });
   for(let k=0;k<=4;k++){
     const t=t0+d*k/4,x=X(t);
@@ -7226,6 +7384,626 @@ function visKinCle(){
      '<div><svg width="26" height="30" viewBox="0 0 26 30">'+visKinSigne(8,2,13,26,20)+
      '</svg><span>niveau haut</span></div></div>';
   return h;
+}
+
+
+
+/* ══ le mur de rejeux ══════════════════════════════════════════════════
+   Six fois la même image, six écritures. Chaque vignette ne dessine que
+   sa propre lecture : on compare d'un regard ce que chacune retient.   */
+var MUR=[{cle:'danse',nom:'Mouvement dansé'},{cle:'kabat',nom:'Kabat'},
+         {cle:'chaines',nom:'Chaînes'},{cle:'laban',nom:'Laban'},
+         {cle:'eshkol',nom:'Eshkol-Wachman'},{cle:'benesh',nom:'Benesh'}];
+function visMurCreer(){
+  const z=document.getElementById('dt-mur');
+  if(!z||z.childNodes.length)return;
+  MUR.forEach(function(m){
+    const d=document.createElement('div');
+    d.className='dt-m';
+    d.innerHTML='<canvas id="mur-'+m.cle+'" width="320" height="240"></canvas>'+
+                '<span>'+m.nom+'</span><b id="murt-'+m.cle+'"></b>';
+    z.appendChild(d);
+  });
+}
+function visMurTexte(cle,txt){
+  const b=document.getElementById('murt-'+cle);
+  if(b)b.textContent=txt||'';
+}
+function visMurLigne(c,a,b,coul,ep){
+  c.beginPath();c.moveTo(a[0],a[1]);c.lineTo(b[0],b[1]);
+  c.strokeStyle=coul;c.lineWidth=ep||2;c.lineCap='round';c.stroke();
+}
+function visMurDessiner(lm,t){
+  if(!VIS.mur||!lm)return;
+  const v=document.getElementById('preview-video');
+  if(!v||!v.videoWidth)return;
+  visMurCreer();
+  const rap=v.videoHeight/v.videoWidth;
+  MUR.forEach(function(m){
+    const cv=document.getElementById('mur-'+m.cle);
+    if(!cv)return;
+    const W=cv.width,H=Math.round(W*rap);
+    if(cv.height!==H)cv.height=H;
+    const c=cv.getContext('2d');
+    c.clearRect(0,0,W,H);
+    c.globalAlpha=0.55;c.drawImage(v,0,0,W,H);c.globalAlpha=1;
+    c.fillStyle='rgba(5,8,15,.34)';c.fillRect(0,0,W,H);
+    const P=function(i){const p=lm[i];return p?[p.x*W,p.y*H]:null;};
+    if(m.cle==='danse'){
+      [[11,12],[11,23],[12,24],[23,24],[23,25],[25,27],[24,26],[26,28],
+       [11,13],[13,15],[12,14],[14,16]].forEach(function(e){
+        const a=P(e[0]),b=P(e[1]);if(a&&b)visMurLigne(c,a,b,'rgba(255,255,255,.72)',1.8);
+      });
+      const s0=VIS.phrase&&VIS.phrase.length?VIS.phrase[VIS.phrase.length-1]:null;
+      visMurTexte('danse',s0?s0.nom:'');
+    }else if(m.cle==='kabat'){
+      const K=VIS.kab;
+      let dit='';
+      KAB_MEMBRES.forEach(function(mm){
+        const a=P(mm.prox),b=P(mm.dist);if(!a||!b)return;
+        const e=K&&K.cour?K.cour[mm.cle]:null;
+        const coul=e?KAB_COUL[e.diag]:'rgba(255,255,255,.22)';
+        visMurLigne(c,a,b,coul,e?2+3*Math.min(1,e.amp*3):1.4);
+        if(e){c.beginPath();c.arc(b[0],b[1],3.4,0,6.2832);c.fillStyle=coul;c.fill();
+              if(!dit)dit=KAB_NOMS[e.diag];}
+      });
+      visMurTexte('kabat',dit);
+    }else if(m.cle==='chaines'){
+      try{visDessinerChaines(c,lm,W,H);}catch(e){}
+      let ch=null,mx=0;
+      if(VIS.ch)CHAINES.forEach(function(x){
+        const g=VIS.ch.w[x.cle]||0;if(g>mx){mx=g;ch=x.nom;}});
+      visMurTexte('chaines',mx>0.12?ch:'');
+    }else if(m.cle==='laban'){
+      const ce=P(0)||P(11);
+      const L=VIS.lab&&VIS.lab.cour?VIS.lab.cour:null;
+      const cx=(lm[11]&&lm[12]&&lm[23]&&lm[24])?
+        ((lm[11].x+lm[12].x+lm[23].x+lm[24].x)/4)*W:W/2;
+      const cy=(lm[11]&&lm[12]&&lm[23]&&lm[24])?
+        ((lm[11].y+lm[12].y+lm[23].y+lm[24].y)/4)*H:H/2;
+      const r=Math.max(18,(L?L.kine:1)*H*0.30);
+      c.beginPath();c.arc(cx,cy,r,0,6.2832);
+      c.strokeStyle='rgba(240,180,41,.55)';c.lineWidth=1.6;c.stroke();
+      c.beginPath();c.arc(cx,cy,r*0.55,0,6.2832);
+      c.strokeStyle='rgba(240,180,41,.22)';c.lineWidth=1;c.stroke();
+      [15,16,27,28].forEach(function(i){
+        const p=P(i);if(!p)return;
+        visMurLigne(c,[cx,cy],p,'rgba(90,209,230,.5)',1.2);
+        c.beginPath();c.arc(p[0],p[1],3,0,6.2832);c.fillStyle='#5ad1e6';c.fill();
+      });
+      visMurTexte('laban',L&&L.action?L.action:'');
+    }else if(m.cle==='eshkol'){
+      EW_SEG.forEach(function(g){
+        const a=P(g.a),b=P(g.b);if(!a||!b)return;
+        const u=visEwUnite(lm[g.b].x-lm[g.a].x,lm[g.b].y-lm[g.a].y);
+        const te=(u*45+200)%360;
+        visMurLigne(c,a,b,'hsla('+te+',70%,62%,.85)',2.2);
+        c.font='600 11px sans-serif';c.textAlign='center';
+        c.fillStyle='hsl('+te+',85%,86%)';
+        c.fillText(String(u),(a[0]+b[0])/2,(a[1]+b[1])/2-4);
+      });
+      visMurTexte('eshkol','');
+    }else if(m.cle==='benesh'){
+      const ep=(P(11)&&P(12))?(P(11)[1]+P(12)[1])/2:null;
+      const ha=(P(23)&&P(24))?(P(23)[1]+P(24)[1])/2:null;
+      const ge=(P(25)&&P(26))?(P(25)[1]+P(26)[1])/2:null;
+      const so=(P(27)&&P(28))?Math.max(P(27)[1],P(28)[1]):null;
+      const te=P(0)?P(0)[1]:null;
+      [te,ep,ha,ge,so].forEach(function(y){
+        if(y==null)return;
+        visMurLigne(c,[6,y],[W-6,y],'rgba(255,255,255,.22)',1);
+      });
+      [[16,'#7ad0ff'],[15,'#7ad0ff'],[28,'#f0a03c'],[27,'#f0a03c']].forEach(function(q){
+        const p=P(q[0]);if(!p)return;
+        visMurLigne(c,[p[0]-7,p[1]],[p[0]+7,p[1]],q[1],3);
+      });
+      visMurTexte('benesh','');
+    }
+  });
+}
+function visMurBascule(){
+  VIS.mur=!VIS.mur;
+  const b=document.getElementById('vis-mur');
+  if(b)b.classList.toggle('on',!!VIS.mur);
+  const z=document.getElementById('dt-mur');
+  if(z)z.className='dt-mur'+(VIS.mur?'':' vide');
+  if(VIS.mur)visMurCreer();
+}
+try{if(document.readyState!=='loading')visMurCreer();
+    else document.addEventListener('DOMContentLoaded',visMurCreer);}catch(e){}
+
+
+
+/* ══ les écritures suivent le corps ════════════════════════════════════
+   Pendant le rejeu, les portées défilent sur une fenêtre glissante et la
+   tête de lecture court sur les rubans. On voit l'écriture se faire.   */
+VIS.fenetre=9.0;                                  /* secondes visibles */
+
+function visFilTete(t){
+  const L=document.querySelectorAll('.dt-fil svg');
+  for(let i=0;i<L.length;i++){
+    const svg=L[i];
+    const t0=parseFloat(svg.getAttribute('data-t0')),
+          t1=parseFloat(svg.getAttribute('data-t1'));
+    if(!isFinite(t0)||!isFinite(t1))continue;
+    let tete=svg.querySelector('.dt-tete');
+    if(!tete){
+      tete=document.createElementNS('http://www.w3.org/2000/svg','line');
+      tete.setAttribute('class','dt-tete');
+      tete.setAttribute('y1','4');tete.setAttribute('y2','28');
+      svg.appendChild(tete);
+    }
+    const d=Math.max(0.2,t1-t0);
+    const x=8+(1000-16)*Math.max(0,Math.min(1,(t-t0)/d));
+    tete.setAttribute('x1',x.toFixed(1));tete.setAttribute('x2',x.toFixed(1));
+  }
+}
+function visEcrSuivre(t){
+  if(t==null||!isFinite(t))return;
+  VIS.tCour=t;
+  try{visFilTete(t);}catch(e){}
+  try{visFilClics();}catch(e){}
+  try{visLecBattre(t);}catch(e){}
+  try{visLecMusique(t);}catch(e){}
+  if(VIS.ecrDer!=null&&t-VIS.ecrDer<0.12&&t>VIS.ecrDer)return;   /* 8 images par seconde */
+  VIS.ecrDer=t;
+  const ouv=VIS.anOuvert||{};
+  try{if(ouv.benesh)visBenAfficher(t);}catch(e){}
+  try{if(ouv.kineto)visKinAfficher(t);}catch(e){}
+  try{if(ouv.eshkol)visEwVif(t);}catch(e){}
+}
+function visEwVif(t){
+  const el=document.getElementById('an-vue-eshkol');if(!el)return;
+  const L=el.querySelectorAll('.ew-u');
+  for(let i=0;i<L.length;i++){
+    const a=parseFloat(L[i].getAttribute('data-t0')),
+          b=parseFloat(L[i].getAttribute('data-t1'));
+    const vif=(isFinite(a)&&isFinite(b)&&t>=a&&t<=b);
+    L[i].className='ew-u'+(vif?' vif':'');
+  }
+}
+
+
+
+/* ══ 1 · boucler sur une bande d'un seul clic ══════════════════════════
+   Le geste qu'on refait cent fois en séance : revoir ce passage-là, en
+   boucle, au ralenti. Un clic sur la bande du ruban suffit.            */
+function visBoucleAB(t0,t1,nom){
+  const v=document.getElementById('preview-video');
+  if(!v)return;
+  VIS.ab={t0:t0,t1:t1,nom:nom||''};
+  v.currentTime=t0;
+  if(!VIS.abPose){
+    VIS.abPose=true;
+    v.addEventListener('timeupdate',function(){
+      if(!VIS.ab)return;
+      if(v.currentTime>VIS.ab.t1||v.currentTime<VIS.ab.t0-0.4)v.currentTime=VIS.ab.t0;
+    });
+  }
+  try{v.playbackRate=0.5;v.play();}catch(e){}
+  visBoucleAfficher();
+}
+function visBoucleLibre(){
+  const v=document.getElementById('preview-video');
+  VIS.ab=null;
+  if(v){try{v.playbackRate=1;}catch(e){}}
+  visBoucleAfficher();
+}
+function visBoucleAfficher(){
+  const z=document.getElementById('dt-boucle');
+  if(!z)return;
+  if(!VIS.ab){z.innerHTML='';return;}
+  z.innerHTML='<span class="dt-boucle">⟲ boucle sur <b>'+(VIS.ab.nom||'ce passage')+
+    '</b> · '+VIS.ab.t0.toFixed(1)+'–'+VIS.ab.t1.toFixed(1)+' s '+
+    '<button onclick="visBoucleLibre()">libérer</button></span>';
+}
+function visFilClics(){
+  const L=document.querySelectorAll('.dt-fil svg rect[data-t0]');
+  for(let i=0;i<L.length;i++){
+    if(L[i].__pose)continue;
+    L[i].__pose=1;
+    L[i].addEventListener('click',function(){
+      visBoucleAB(parseFloat(this.getAttribute('data-t0')),
+                  parseFloat(this.getAttribute('data-t1')),
+                  this.getAttribute('data-nom'));
+    });
+  }
+}
+
+/* ══ 2 · poser un repère sur l'instant ═════════════════════════════════ */
+function visReperePoser(){
+  const v=document.getElementById('preview-video');
+  const t=v?v.currentTime:(VIS.tCour||0);
+  const s0=VIS.phrase&&VIS.phrase.length?VIS.phrase[VIS.phrase.length-1]:null;
+  (VIS.reperes=VIS.reperes||[]).push({t:t,nom:s0?s0.nom:'repère'});
+  visReperesAfficher();
+}
+function visReperesAfficher(){
+  const z=document.getElementById('dt-reperes');
+  if(!z)return;
+  const R=VIS.reperes||[];
+  if(!R.length){z.innerHTML='';return;}
+  let h='<div class="dt-rep">';
+  R.forEach(function(r,i){
+    h+='<span onclick="visRepereAller('+i+')">'+r.nom+
+       ' <i>'+r.t.toFixed(1)+' s</i></span>';
+  });
+  z.innerHTML=h+'</div>';
+}
+function visRepereAller(i){
+  const r=(VIS.reperes||[])[i],v=document.getElementById('preview-video');
+  if(r&&v)v.currentTime=Math.max(0,r.t-0.4);
+}
+
+/* ══ 3 · le miroir : le côté retourné posé sur l'autre ═════════════════
+   Le développé à droite vaut-il celui de gauche ? La question se règle
+   à l'œil, sans mesure : on superpose et on regarde.                   */
+var MIR=[[11,12],[13,14],[15,16],[23,24],[25,26],[27,28]];
+function visDessinerMiroir(ctx2,lm,w,h){
+  if(!VIS.miroir||!lm||!lm[11]||!lm[12]||!lm[23]||!lm[24])return;
+  const axe=((lm[11].x+lm[12].x+lm[23].x+lm[24].x)/4)*w;
+  const anc=ctx2.globalCompositeOperation;
+  try{ctx2.globalCompositeOperation='lighter';}catch(e){}
+  [[0,1],[1,0]].forEach(function(sens,k){
+    const coul=k?'rgba(240,180,41,.72)':'rgba(90,209,230,.72)';
+    [[0,1],[1,2],[3,4],[4,5]].forEach(function(e){
+      const a=lm[MIR[e[0]][sens[0]]],b=lm[MIR[e[1]][sens[0]]];
+      if(!a||!b)return;
+      const ax=2*axe-a.x*w,bx=2*axe-b.x*w;
+      ctx2.beginPath();ctx2.moveTo(ax,a.y*h);ctx2.lineTo(bx,b.y*h);
+      ctx2.strokeStyle=coul;ctx2.lineWidth=2.2;ctx2.lineCap='round';ctx2.stroke();
+    });
+  });
+  ctx2.beginPath();ctx2.moveTo(axe,0);ctx2.lineTo(axe,h);
+  ctx2.strokeStyle='rgba(255,255,255,.20)';ctx2.lineWidth=1;
+  ctx2.setLineDash([4,5]);ctx2.stroke();ctx2.setLineDash([]);
+  try{ctx2.globalCompositeOperation=anc;}catch(e){}
+}
+
+/* ══ 4 · les amplitudes atteintes pendant chaque figure ════════════════ */
+function visAmpPousser(lm,t){
+  if(!lm)return;
+  const seg=VIS.phrase&&VIS.phrase.length?VIS.phrase[VIS.phrase.length-1]:null;
+  if(!seg)return;
+  const A=seg.amp||(seg.amp={});
+  const mesure=function(cle,a,b,c){
+    const d=visDsAngle(lm[a],lm[b],lm[c]);
+    if(d==null||!isFinite(d))return;
+    if(A[cle]==null||d<A[cle])A[cle]=d;          /* on garde la flexion la plus fermée */
+  };
+  mesure('genouD',24,26,28);mesure('genouG',23,25,27);
+  mesure('coudeD',12,14,16);mesure('coudeG',11,13,15);
+  const hd=visDsAngle(lm[12],lm[24],lm[26]),hg=visDsAngle(lm[11],lm[23],lm[25]);
+  if(hd!=null&&(A.hancheD==null||hd<A.hancheD))A.hancheD=hd;
+  if(hg!=null&&(A.hancheG==null||hg<A.hancheG))A.hancheG=hg;
+}
+function visAmpAfficher(){
+  const z=document.getElementById('dt-amp');
+  if(!z)return;
+  const P=(VIS.phrase||[]).filter(function(s){return s.t1-s.t0>=0.3&&s.amp;});
+  if(!P.length){z.innerHTML='';return;}
+  let h='<div class="lab-h">Amplitudes atteintes pendant chaque figure</div>'+
+        '<table class="amp-t"><tr><th>figure</th><th>durée</th><th>genou D</th>'+
+        '<th>genou G</th><th>hanche D</th><th>hanche G</th><th>coude D</th>'+
+        '<th>coude G</th></tr>';
+  const c=function(v){return v==null?'—':Math.round(v)+'°';};
+  P.slice(-14).forEach(function(s){
+    h+='<tr><td>'+s.nom+'</td><td>'+(s.t1-s.t0).toFixed(1)+' s</td><td>'+
+       c(s.amp.genouD)+'</td><td>'+c(s.amp.genouG)+'</td><td>'+c(s.amp.hancheD)+
+       '</td><td>'+c(s.amp.hancheG)+'</td><td>'+c(s.amp.coudeD)+'</td><td>'+
+       c(s.amp.coudeG)+'</td></tr>';
+  });
+  z.innerHTML=h+'</table>';
+}
+
+/* ══ 5 · le mode leçon : le mur seul, en grand ═════════════════════════ */
+function visLecon(){
+  const sc=document.querySelector('.dt-scene');
+  if(!sc)return;
+  const on=sc.className.indexOf('lecon')<0;
+  sc.className=on?(sc.className+' lecon'):sc.className.replace(' lecon','');
+  const b=document.getElementById('dt-sortie');
+  if(b)b.style.display=on?'inline-block':'none';
+  if(on&&!VIS.mur)visMurBascule();
+  if(on&&!VIS.lecBpm)visLecTempo(visLecTempoMesure());
+  if(!on&&VIS.lecOn)visLecMetro();
+  if(!on)VIS.lecJoue={};
+}
+
+/* ══ 6 · emporter la partition ═════════════════════════════════════════ */
+function visPartition(){
+  const b=document.getElementById('an-vue-benesh');
+  const k=document.getElementById('an-vue-kineto');
+  try{visBenAfficher();visKinAfficher();}catch(e){}
+  const html='<!doctype html><meta charset="utf-8"><title>Partition — DanceTracker</title>'+
+    '<style>body{background:#0a1018;color:#dce9fb;font-family:Inter Tight,sans-serif;'+
+    'padding:30px}h1{font-weight:300;letter-spacing:.02em}h2{font-size:12px;'+
+    'letter-spacing:.2em;text-transform:uppercase;color:#f0b429;margin-top:34px}'+
+    'svg{background:transparent}@media print{body{background:#fff;color:#111}}</style>'+
+    '<h1>Partition du mouvement</h1><p>'+new Date().toLocaleString()+'</p>'+
+    '<h2>Portée Benesh</h2>'+(b?b.innerHTML:'')+
+    '<h2>Kinétographie Laban</h2>'+(k?k.innerHTML:'')+
+    '<script>onload=function(){print();}<\/script>';
+  const w=window.open('','_blank');
+  if(w){w.document.write(html);w.document.close();}
+}
+
+
+
+/* ══ le métronome de la leçon ══════════════════════════════════════════
+   Déchiffrer une notation, c'est lire une partition : sans pulsation on
+   ne danse pas dessus. Le tempo est pris sur le mouvement lui-même — la
+   durée moyenne des figures — puis réglable à la main. Le décompte tombe
+   sur l'horloge de la vidéo, donc la classe reste avec l'image.        */
+function visLecTempoMesure(){
+  const P=(VIS.phrase||[]).filter(function(s){return s.t1-s.t0>=0.18;});
+  if(P.length<3)return 96;
+  let som=0;P.forEach(function(s){som+=s.t1-s.t0;});
+  let bpm=60/(som/P.length);
+  while(bpm>152)bpm/=2;
+  while(bpm<46)bpm*=2;
+  return Math.round(Math.max(46,Math.min(152,bpm)));
+}
+function visLecTempo(v){
+  VIS.lecBpm=Math.max(46,Math.min(152,parseInt(v,10)||96));
+  const a=document.getElementById('lec-bpm');if(a)a.textContent=VIS.lecBpm;
+  const r=document.getElementById('lec-range');if(r)r.value=VIS.lecBpm;
+}
+function visLecMesure(){
+  VIS.lecMes=(VIS.lecMes===3?4:(VIS.lecMes===4?2:3));
+  const b=document.getElementById('lec-mes');
+  if(b)b.textContent=VIS.lecMes+' temps';
+}
+function visLecSon(fort){
+  try{
+    const AC=window.AudioContext||window.webkitAudioContext;
+    if(!AC)return;
+    const c=VIS.lecCtx||(VIS.lecCtx=new AC());
+    if(c.state==='suspended')c.resume();
+    const t=c.currentTime+0.01;
+    const g=c.createGain();
+    g.gain.setValueAtTime(0.0001,t);
+    const vol=(VIS.lecVol==null?0.7:VIS.lecVol);
+    g.gain.exponentialRampToValueAtTime((fort?0.28:0.13)*vol,t+0.005);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+(fort?0.16:0.09));
+    g.connect(c.destination);
+    const o=c.createOscillator();
+    o.type='triangle';
+    o.frequency.setValueAtTime(fort?1180:820,t);
+    o.connect(g);o.start(t);o.stop(t+0.2);
+  }catch(e){}
+}
+function visLecBattre(t){
+  if(!VIS.lecOn)return;
+  if(visLecDecompte(t))return;
+  const bpm=VIS.lecBpm||96,mes=VIS.lecMes||4;
+  const n=Math.floor(t*bpm/60);
+  if(n===VIS.lecDer)return;
+  VIS.lecDer=n;
+  const temps=(n%mes)+1;
+  if(!VIS.lecPart||temps===1)visLecSon(temps===1);
+  const el=document.getElementById('lec-t');
+  if(el){
+    el.textContent=temps;
+    el.className='lec-t'+(temps===1?' frappe':'');
+  }
+}
+function visLecMetro(){
+  VIS.lecOn=!VIS.lecOn;
+  const b=document.getElementById('lec-jouer');
+  if(b){b.className='lec-b'+(VIS.lecOn?' on':'');
+        b.textContent=VIS.lecOn?'■ silence':'▶ mesurer';}
+  const m=document.getElementById('lec-msg');
+  if(m)m.textContent=VIS.lecOn?'déchiffrez : le mur avance avec la mesure'
+                              :'le métronome suit la vidéo';
+  if(VIS.lecOn){
+    VIS.lecDer=null;
+    if(!VIS.lecBpm)visLecTempo(visLecTempoMesure());
+    const v0=document.getElementById('preview-video');
+    const t=v0?(v0.currentTime||0):(VIS.tCour||0);
+    VIS.lecT0=t+(VIS.lecMes||4)*2*(60/(VIS.lecBpm||96));   /* deux mesures d'appel */
+    VIS.lecJoue={};
+    visLecSon(true);
+    const v=document.getElementById('preview-video');
+    if(v){try{v.play();}catch(e){}}
+  }else{
+    VIS.lecT0=null;
+    const el=document.getElementById('lec-t');
+    if(el){el.textContent='–';el.className='lec-t';}
+  }
+}
+
+
+
+/* ══ le répertoire ═════════════════════════════════════════════════════
+   Notes réelles, positions et durées en temps. Rien n'est généré : ce
+   sont les œuvres. Elles se jouent au tempo de la leçon, c'est-à-dire au
+   tempo relevé sur le mouvement.                                       */
+function lecBachPrelude(){
+  const barres=[[48,52,55,60,64],[48,50,57,62,65],[47,50,55,62,65],
+                [48,52,55,60,64],[48,52,57,64,69],[48,50,54,57,62],
+                [47,50,55,62,67],[47,48,52,55,60]];
+  const chant=[],accomp=[];
+  barres.forEach(function(b,m){
+    const fig=[b[0],b[1],b[2],b[3],b[4],b[2],b[3],b[4]];
+    for(let tour=0;tour<2;tour++)
+      for(let k=0;k<8;k++)chant.push([4*m+(tour*8+k)*0.25,fig[k],0.25]);
+    accomp.push([4*m,[b[0]-12],4]);
+  });
+  return{chant:chant,accomp:accomp,long:32};
+}
+function lecBachMenuet(){
+  const lignes=[[[0,74,1],[1,67,.5],[1.5,69,.5],[2,71,.5],[2.5,72,.5]],
+                [[0,74,1],[1,67,1],[2,67,1]],
+                [[0,76,1],[1,72,.5],[1.5,74,.5],[2,76,.5],[2.5,78,.5]],
+                [[0,79,1],[1,67,1],[2,67,1]],
+                [[0,72,1],[1,74,.5],[1.5,72,.5],[2,71,.5],[2.5,69,.5]],
+                [[0,71,1],[1,72,.5],[1.5,71,.5],[2,69,.5],[2.5,67,.5]],
+                [[0,66,1],[1,67,.5],[1.5,69,.5],[2,71,.5],[2.5,67,.5]],
+                [[0,69,3]]];
+  const basses=[[43,50,55],[43,50,55],[48,55,60],[43,50,55],
+                [48,55,60],[43,50,55],[38,45,50],[38,45,50]];
+  const chant=[],accomp=[];
+  lignes.forEach(function(l,m){
+    l.forEach(function(n){chant.push([3*m+n[0],n[1],n[2]]);});
+    accomp.push([3*m,basses[m],3]);
+  });
+  return{chant:chant,accomp:accomp,long:24};
+}
+function lecElise(){
+  return{chant:[[0,76,.5],[.5,75,.5],[1,76,.5],[1.5,75,.5],[2,76,.5],[2.5,71,.5],
+                [3,74,.5],[3.5,72,.5],[4,69,1.5],
+                [6,60,.5],[6.5,64,.5],[7,69,.5],[7.5,71,1.5],
+                [9,64,.5],[9.5,68,.5],[10,71,.5],[10.5,72,1.5],
+                [12,64,.5],[12.5,76,.5],[13,75,.5],[13.5,76,.5],[14,75,.5],
+                [14.5,76,.5],[15,71,.5],[15.5,74,.5],[16,72,.5],[16.5,69,1.5],
+                [18,60,.5],[18.5,64,.5],[19,69,.5],[19.5,71,1.5],
+                [21,64,.5],[21.5,72,.5],[22,71,.5],[22.5,69,2.5]],
+         accomp:[[6,[45,52,57],3],[9,[40,47,56],3],[12,[45,52,57],6],
+                 [18,[45,52,57],3],[21,[40,47,56],4]],long:25};
+}
+function lecJoie(){
+  const th=[64,64,65,67,67,65,64,62,60,60,62,64];
+  const chant=[];let t=0;
+  th.forEach(function(n){chant.push([t,n,1]);t+=1;});
+  chant.push([12,64,1.5],[13.5,62,.5],[14,62,2]);
+  const copie=chant.slice();
+  copie.forEach(function(n){chant.push([n[0]+16,n[1],n[2]]);});
+  chant[chant.length-3]=[28,62,1.5];
+  chant[chant.length-2]=[29.5,60,.5];
+  chant[chant.length-1]=[30,60,2];
+  const acc=[[48,55,64],[48,55,64],[48,55,64],[43,50,59],
+             [48,55,64],[48,55,64],[43,50,59],[48,55,64]];
+  const accomp=[];
+  for(let m=0;m<8;m++)accomp.push([4*m,acc[m],4]);
+  return{chant:chant,accomp:accomp,long:32};
+}
+function lecCanon(){
+  const basses=[[50,57,62],[45,52,61],[47,54,59],[42,49,57],
+                [43,50,59],[50,57,62],[43,50,59],[45,52,61]];
+  const dessus=[[78,76],[74,73],[71,69],[71,73],[74,73],[71,69],[67,66],[67,64]];
+  const chant=[],accomp=[];
+  for(let m=0;m<8;m++){
+    accomp.push([4*m,basses[m],4]);
+    chant.push([4*m,dessus[m][0],2],[4*m+2,dessus[m][1],2]);
+  }
+  return{chant:chant,accomp:accomp,long:32};
+}
+var LEC_AIRS=[
+ {cle:'',nom:'sans musique'},
+ {cle:'menuet',nom:'Menuet en sol · Bach',bati:lecBachMenuet},
+ {cle:'prelude',nom:'Prélude en ut · Bach',bati:lecBachPrelude},
+ {cle:'elise',nom:'Lettre à Élise · Beethoven',bati:lecElise},
+ {cle:'joie',nom:'Hymne à la joie · Beethoven',bati:lecJoie},
+ {cle:'canon',nom:'Canon en ré · Pachelbel',bati:lecCanon}];
+
+function visLecAir(){
+  VIS.lecAirN=((VIS.lecAirN||0)+1)%LEC_AIRS.length;
+  const a=LEC_AIRS[VIS.lecAirN];
+  VIS.lecPart=a.bati?a.bati():null;
+  VIS.lecJoue={};
+  const b=document.getElementById('lec-air');
+  if(b){b.textContent='♪ '+a.nom;b.className='lec-b'+(a.bati?' on':'');}
+  if(a.bati&&!VIS.lecOn)visLecMetro();
+}
+function visLecVoix(midi,quand,duree,gain,doux){
+  try{
+    const c=VIS.lecCtx;if(!c)return;
+    const f=440*Math.pow(2,(midi-69)/12);
+    const g=c.createGain();
+    g.gain.setValueAtTime(0.0001,quand);
+    const vol=(VIS.lecVol==null?0.7:VIS.lecVol);
+    g.gain.exponentialRampToValueAtTime(Math.max(0.0002,gain*vol),quand+(doux?0.28:0.02));
+    g.gain.exponentialRampToValueAtTime(0.0001,quand+duree);
+    g.connect(c.destination);
+    for(let k=0;k<2;k++){
+      const o=c.createOscillator();
+      o.type=doux?'sine':'triangle';
+      o.frequency.setValueAtTime(f*Math.pow(2,(k?4:-4)/1200),quand);
+      o.connect(g);o.start(quand);o.stop(quand+duree+0.05);
+    }
+  }catch(e){}
+}
+function visLecMusique(t){
+  const P=VIS.lecPart;
+  if(!P||!VIS.lecOn||t==null||!isFinite(t))return;
+  try{
+    const AC=window.AudioContext||window.webkitAudioContext;
+    if(!AC)return;
+    const c=VIS.lecCtx||(VIS.lecCtx=new AC());
+    if(c.state==='suspended')c.resume();
+    if(VIS.lecT!=null&&t<VIS.lecT-0.4){VIS.lecJoue={};VIS.lecT0=null;}  /* rembobiné */
+    VIS.lecT=t;
+    const tps=60/(VIS.lecBpm||96);
+    const dep=VIS.lecT0||0;
+    if(t<dep)return;                                   /* on décompte encore */
+    const u=t-dep,tour=P.long*tps,horizon=u+0.28;
+    const k0=Math.floor(Math.max(0,u-0.3)/tour),k1=Math.floor(horizon/tour);
+    for(let k=k0;k<=k1;k++){
+      P.chant.forEach(function(n,i){
+        const t0=k*tour+n[0]*tps,cle='m'+k+'-'+i;
+        if(VIS.lecJoue[cle]||t0>horizon||t0<u-0.3)return;
+        VIS.lecJoue[cle]=1;
+        visLecVoix(n[1],c.currentTime+Math.max(0,t0-u),n[2]*tps*0.92,
+                   0.10*visLecNuance(),false);
+      });
+      P.accomp.forEach(function(a,i){
+        const t0=k*tour+a[0]*tps,cle='a'+k+'-'+i;
+        if(VIS.lecJoue[cle]||t0>horizon||t0<u-0.3)return;
+        VIS.lecJoue[cle]=1;
+        a[1].forEach(function(p,j){
+          visLecVoix(p,c.currentTime+Math.max(0,t0-u),a[2]*tps*0.96,
+                     0.042-0.006*j,true);
+        });
+      });
+    }
+  }catch(e){}
+}
+
+
+
+/* ══ la mesure sort du mode leçon ══════════════════════════════════════ */
+function visLecBarre(){
+  const z=document.getElementById('lec-bar');
+  if(!z)return;
+  const on=z.className.indexOf('on')<0;
+  z.className='lec-bar'+(on?' on':'');
+  const b=document.getElementById('vis-mesure');
+  if(b)b.classList.toggle('on',on);
+  if(on&&!VIS.lecBpm)visLecTempo(visLecTempoMesure());
+  if(!on&&VIS.lecOn)visLecMetro();
+}
+function visLecAuMouvement(){
+  visLecTempo(visLecTempoMesure());
+  VIS.lecJoue={};
+  const m=document.getElementById('lec-msg');
+  if(m)m.textContent='tempo repris sur la danse : '+VIS.lecBpm+' à la noire';
+}
+function visLecVolume(v){
+  VIS.lecVol=Math.max(0,Math.min(1,(parseInt(v,10)||0)/100));
+}
+/* ══ le décompte : une classe ne part pas sans « 5, 6, 7, 8 » ══════════ */
+function visLecDecompte(t){
+  if(VIS.lecT0==null)return false;
+  if(t>=VIS.lecT0)return false;
+  const tps=60/(VIS.lecBpm||96);
+  const reste=Math.ceil((VIS.lecT0-t)/tps);
+  const n=Math.floor(t/tps);
+  if(n!==VIS.lecDer){
+    VIS.lecDer=n;
+    visLecSon(false);
+    const el=document.getElementById('lec-t');
+    if(el){el.textContent=reste;el.className='lec-t compte';}
+  }
+  return true;
+}
+/* ══ la nuance suit le corps ═══════════════════════════════════════════
+   Une partition qui ignore le danseur n'est qu'un disque. La mélodie
+   enfle quand le geste s'engage, et se retire quand il s'apaise.       */
+function visLecNuance(){
+  const L=VIS.lab&&VIS.lab.cour?VIS.lab.cour:null;
+  if(!L||!isFinite(L.poids))return 1;
+  return 0.62+0.55*Math.max(0,Math.min(1,L.poids));
 }
 
 </script>
