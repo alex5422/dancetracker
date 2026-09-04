@@ -774,6 +774,24 @@ body.grand-ouvert{overflow:hidden;}
 .dt-scene .an-vide{color:#9fb2cc}
 @media(max-width:660px){.dt-scene{padding:12px 12px 16px;border-radius:14px}}
 
+
+.an-sep{flex:1 1 auto;min-width:8px}
+.an-t{background:transparent;border:1px solid rgba(255,255,255,.18);color:#9fb2cc;
+ border-radius:10px;padding:7px 13px;font-size:12px;cursor:pointer;font-family:inherit;
+ letter-spacing:.06em}
+.an-t:hover{border-color:rgba(240,180,41,.55);color:#fff3d8}
+.dt-scene.multi .an-vue.on{border-top:1px solid rgba(255,255,255,.09);
+ margin-top:18px;padding-top:14px}
+.dt-scene.multi .an-vue.on:first-of-type{border-top:0;margin-top:0;padding-top:0}
+.dt-scene.multi .an-vue.on::before{content:attr(data-nom);display:block;
+ font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--dt-or);
+ margin-bottom:10px;opacity:.9}
+.an-aide{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));
+ gap:8px;margin:10px 0 4px}
+.an-aide div{display:flex;align-items:center;gap:8px;font-size:11.5px;color:#9fb2cc;
+ background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09);
+ border-radius:9px;padding:6px 9px}
+
 </style>
 </head>
 <body>
@@ -927,13 +945,15 @@ body.grand-ouvert{overflow:hidden;}
         <div class="an-onglets">
           <button class="an-o on" id="an-b-danse" onclick="visAnOnglet('danse')">Mouvement dansé</button>
           <button class="an-o" id="an-b-kabat" onclick="visAnOnglet('kabat')">Kabat</button>
+          <button class="an-o" id="an-b-bobath" onclick="visAnOnglet('bobath')">Bobath</button>
           <button class="an-o" id="an-b-laban" onclick="visAnOnglet('laban')">Laban</button>
           <button class="an-o" id="an-b-eshkol" onclick="visAnOnglet('eshkol')">Eshkol-Wachman</button>
           <button class="an-o" id="an-b-benesh" onclick="visAnOnglet('benesh')">Benesh</button>
-          <button class="an-o" id="an-b-bobath" onclick="visAnOnglet('bobath')">Bobath</button>
           <button class="an-o" id="an-b-kineto" onclick="visAnOnglet('kineto')">Kinétographie</button>
+          <span class="an-sep"></span>
+          <button class="an-t" id="an-b-tout" onclick="visAnTout()">tout afficher</button>
         </div>
-        <div class="an-vue on" id="an-vue-danse">
+        <div class="an-vue on" id="an-vue-danse" data-nom="Mouvement dansé">
         <div class="portees" id="danse-portees"></div>
         <div class="filtres">
           <button class="vis-o on" id="jeu-complet" onclick="visJeu('complet')">complet</button>
@@ -950,12 +970,12 @@ body.grand-ouvert{overflow:hidden;}
         <div class="releve" id="danse-releve"></div>
         <div class="danse-phrase" id="danse-phrase"></div>
         </div>
-        <div class="an-vue" id="an-vue-kabat"></div>
-        <div class="an-vue" id="an-vue-laban"></div>
-        <div class="an-vue" id="an-vue-eshkol"></div>
-        <div class="an-vue" id="an-vue-benesh"></div>
-        <div class="an-vue" id="an-vue-bobath"></div>
-        <div class="an-vue" id="an-vue-kineto"></div>
+        <div class="an-vue" id="an-vue-kabat" data-nom="Kabat · diagonales"></div>
+        <div class="an-vue" id="an-vue-laban" data-nom="Laban"></div>
+        <div class="an-vue" id="an-vue-eshkol" data-nom="Eshkol-Wachman"></div>
+        <div class="an-vue" id="an-vue-benesh" data-nom="Benesh"></div>
+        <div class="an-vue" id="an-vue-bobath" data-nom="Bobath · contrôle postural"></div>
+        <div class="an-vue" id="an-vue-kineto" data-nom="Kinétographie"></div>
         </div>
                 </section>
 
@@ -6187,17 +6207,7 @@ function visSonHarmonieFigure(seg,evtProche){
 
 
 /* ══ les onglets ═══════════════════════════════════════════════════════ */
-function visAnOnglet(n){
-  ['danse','kabat','laban','eshkol','benesh','bobath','kineto'].forEach(function(k){
-    const v=document.getElementById('an-vue-'+k),b=document.getElementById('an-b-'+k);
-    if(v)v.className='an-vue'+(k===n?' on':'');
-    if(b)b.className='an-o'+(k===n?' on':'');
-  });
-  VIS.anOnglet=n;
-  try{if(n==='kabat')visKabAfficher();if(n==='laban')visLabAfficher();
-      if(n==='eshkol')visEwAfficher();if(n==='benesh')visBenAfficher();
-      if(n==='kineto')visKinAfficher();if(n==='bobath')visBobAfficher();}catch(e){}
-}
+/* la bascule exclusive a laissé la place aux cases à cocher, plus bas */
 
 /* ══ Kabat · les diagonales de facilitation ════════════════════════════
    Un membre qui monte en croisant la ligne médiane décrit une D1 flexion ;
@@ -6850,11 +6860,13 @@ function visKinAfficher(){
   g+='<text x="6" y="'+(H-8)+'" font-size="8" fill="#6d7f96" font-family="sans-serif">'+
      'début</text><text x="6" y="16" font-size="8" fill="#6d7f96" '+
      'font-family="sans-serif">fin</text></svg>';
-  el.innerHTML='<div class="kab-s">Le temps monte. La ligne centrale sépare la '+
-    'gauche de la droite ; la forme du signe dit la direction, sa trame dit le '+
-    'niveau, sa hauteur dit la durée.</div><div class="kin-w">'+g+'</div>'+
-    '<div class="ben-l"><span><b>plein</b> niveau bas</span>'+
-    '<span><b>point</b> niveau moyen</span><span><b>hachuré</b> niveau haut</span></div>'+
+  el.innerHTML='<div class="kab-s"><b>Comment lire.</b> Le temps monte, du bas '+
+    'vers le haut. La ligne centrale épaisse sépare la gauche de la droite ; de '+
+    'part et d’autre, une colonne par membre. Chaque signe est un geste tenu : sa '+
+    '<b>forme</b> dit vers où le membre pointe, sa <b>trame</b> dit à quelle '+
+    'hauteur, sa <b>longueur</b> dit combien de temps il y reste.</div>'+
+    visKinCle()+'<div class="kin-w">'+g+'</div>'+
+    ''+
     '';
 }
 
@@ -7146,6 +7158,74 @@ function visChLegende(){
     h+='<span><i style="background:rgb('+ch.c.join(',')+')"></i>'+ch.nom+'</span>';
   });
   return h+'</div>';
+}
+
+
+
+/* ══ les lectures s'associent ══════════════════════════════════════════
+   Chaque onglet est une case à cocher, pas un choix exclusif : on peut
+   regarder Kabat et Bobath côte à côte, ou tout sortir d'un coup. Une
+   lecture au moins reste toujours ouverte.                              */
+var AN_VUES=['danse','kabat','bobath','laban','eshkol','benesh','kineto'];
+function visAnRendre(){
+  const cle=VIS.anOuvert||(VIS.anOuvert={danse:1,kabat:1,bobath:1});
+  let n=0;
+  AN_VUES.forEach(function(k){
+    const v=document.getElementById('an-vue-'+k),b=document.getElementById('an-b-'+k);
+    const on=!!cle[k];if(on)n++;
+    if(v)v.className='an-vue'+(on?' on':'');
+    if(b)b.className='an-o'+(on?' on':'');
+  });
+  const sc=document.querySelector('.dt-scene');
+  if(sc)sc.className='dt-scene'+(n>1?' multi':'');
+  const bt=document.getElementById('an-b-tout');
+  if(bt)bt.textContent=(n>=AN_VUES.length)?'n’en garder qu’une':'tout afficher';
+  try{
+    if(cle.kabat)visKabAfficher();
+    if(cle.bobath)visBobAfficher();
+    if(cle.laban)visLabAfficher();
+    if(cle.eshkol)visEwAfficher();
+    if(cle.benesh)visBenAfficher();
+    if(cle.kineto)visKinAfficher();
+  }catch(e){}
+}
+function visAnOnglet(n){
+  const cle=VIS.anOuvert||(VIS.anOuvert={danse:1,kabat:1,bobath:1});
+  if(cle[n]){
+    let reste=0;AN_VUES.forEach(function(k){if(cle[k])reste++;});
+    if(reste<=1)return;                       /* on n'éteint pas la dernière */
+    delete cle[n];
+  }else cle[n]=1;
+  visAnRendre();
+}
+function visAnTout(){
+  const cle=VIS.anOuvert||(VIS.anOuvert={});
+  let n=0;AN_VUES.forEach(function(k){if(cle[k])n++;});
+  VIS.anOuvert={};
+  if(n>=AN_VUES.length)VIS.anOuvert.danse=1;
+  else AN_VUES.forEach(function(k){VIS.anOuvert[k]=1;});
+  visAnRendre();
+}
+try{if(document.readyState!=='loading')visAnRendre();
+    else document.addEventListener('DOMContentLoaded',visAnRendre);}catch(e){}
+
+/* ══ la clé de lecture de la portée ════════════════════════════════════ */
+function visKinCle(){
+  const noms=['droite','avant-droite','avant','avant-gauche','gauche',
+              'arrière-gauche','arrière','arrière-droite','sur place'];
+  let h='<div class="an-aide">';
+  for(let d=0;d<9;d++){
+    h+='<div><svg width="26" height="30" viewBox="0 0 26 30">'+
+       visKinSigne(d,1,13,26,20)+'</svg><span>'+noms[d]+'</span></div>';
+  }
+  h+='</div><div class="an-aide">'+
+     '<div><svg width="26" height="30" viewBox="0 0 26 30">'+visKinSigne(8,0,13,26,20)+
+     '</svg><span>niveau bas</span></div>'+
+     '<div><svg width="26" height="30" viewBox="0 0 26 30">'+visKinSigne(8,1,13,26,20)+
+     '</svg><span>niveau moyen</span></div>'+
+     '<div><svg width="26" height="30" viewBox="0 0 26 30">'+visKinSigne(8,2,13,26,20)+
+     '</svg><span>niveau haut</span></div></div>';
+  return h;
 }
 
 </script>
