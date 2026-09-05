@@ -1,7 +1,7 @@
-/* OrthoScope — service worker
+/* DanceTracker — service worker
    Objectif : que l'application s'ouvre et fonctionne sans connexion après
    le premier lancement, modèles d'analyse vidéo compris. */
-const CACHE='orthoscope-v2';
+const CACHE='dancetracker-v1';
 const CDN=/^https:\/\/(cdn\.jsdelivr\.net|cdnjs\.cloudflare\.com|fonts\.googleapis\.com|fonts\.gstatic\.com|storage\.googleapis\.com)\//;
 
 self.addEventListener('install',function(e){
