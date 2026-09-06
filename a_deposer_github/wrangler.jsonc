@@ -1,0 +1,8 @@
+{
+  // Site statique : aucun script, seulement des fichiers à servir.
+  "name": "dancetracker",
+  "compatibility_date": "2026-08-31",
+  "assets": {
+    "directory": "./public/"
+  }
+}
